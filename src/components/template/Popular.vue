@@ -5,15 +5,13 @@
       <li class="moreli" >&nbsp;</li>
     </ul>
   <div class="detaildapp">
-      <img v-if="lang == 'zh'" class="popularimg" @click="staking_btn" src="static/images/stakingbtn_zh.png"/>
+    <img v-if="lang == 'zh'" class="popularimg" @click="popular_master_btn" src="static/img/go.png"/>
+      <!-- <img v-if="lang == 'zh'" class="popularimg" @click="staking_btn" src="static/images/stakingbtn_zh.png"/>
       <img v-if="lang != 'zh'" class="popularimg" @click="staking_btn" src="static/images/stakingbtn_en.png"/>
       
       <img v-if="lang == 'zh'" class="popularimg" @click="popular_master_btn" src="static/images/popular_img.png"/>
       <img v-if="lang != 'zh'" class="popularimg" @click="popular_master_btn" src="static/images/popular_img_en.png"/>
-     <!--  <ul class="excellcontent">
-        <li>{{$t("message.mall")}}</li>
-        <li class="secondtitle">{{$t("message.mallcomment")}}</li>
-      </ul> -->
+      -->
     </div>
 </div>
 </template>
@@ -37,15 +35,16 @@
 	  },
 	  methods: {
 		     popular_master_btn:function(){
-          let dname = window.localStorage.getItem("NumberOne");
-          if(dname){
-            window.open(Links.url.masternode_plan,'_self')
-          }else{
-            trans.$emit("tipsemit",{"name":"NumberOne","link":Links.url.masternode_plan,"state":0});
-          }
+           window.open(Links.url.vipnode,'_self')
+          // let dname = window.localStorage.getItem("Vip节点");
+          // if(dname){
+          //   window.open(Links.url.vipnode,'_self')
+          // }else{
+          //   trans.$emit("tipsemit",{"name":"Vip节点","link":Links.url.vipnode,"state":0});
+          // }
         },
         staking_btn:function(){
-          window.open(Links.url.staking,'_self')
+          window.open(Links.url.vipnode,'_self')
         },
         states() {
           let that = this;

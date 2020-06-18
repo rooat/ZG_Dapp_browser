@@ -1,38 +1,18 @@
 <template>
   <div class="refferbox">
     <div class="reffertable_box">
-	<table class="reffertable">
+	  <table class="reffertable">
       <tr>
-        <td><img class="refferpic" :src="phoenix_sec" @click="phoenix_secbtn"/></td> 
-        <td><img class="refferpic" :src="zerotrap" @click="zerotrapbtn"/></td>
-        <td><img class="refferpic" :src="eash" @click="eashbtn"/></td>
-        <td><img class="refferpic" :src="zerodicelogo" @click="zerodicelogobtn"/></td> 
-        
+        <td><img class="refferpic" :src="shuzitanxian" @click="alertbtn(1)"/></td> 
+        <td><img class="refferpic" :src="huanlesaizi" @click="alertbtn(2)"/></td>
+        <td><img class="refferpic" :src="qukuainongchang" @click="alertbtn(3)"/></td>
+        <td><img class="refferpic" :src="kuanggongdaheng" @click="alertbtn(4)"/></td>
       </tr>
       <tr>
-        <td @click="phoenix_secbtn">{{$t("message.phoenix_sec")}}</td> 
-        <td @click="zerotrapbtn">{{$t("message.zerotrap")}}</td>
-        <td @click="eashbtn">{{$t("message.eash")}}</td>
-        <td @click="zerodicelogobtn">{{$t("message.zerodicelogo")}}</td>
-        
-      </tr>
-    </table>
-    <table class="reffertable">
-      <tr>
-        <td><img class="refferpic" :src="blockoptions" @click="blockoptionsbtn"/></td>
-        <td><img class="refferpic" :src="shengcaiyoudao" @click="shengcaiyoudaobtn"/></td>
-        <td><img class="refferpic" :src="Boxes" @click="Boxesbtn"/></td>
-         <!-- <td><img class="refferpic" :src="phoenix" @click="phoenixbtn"/></td> -->
-        <td></td>
-        
-      </tr>
-      <tr>
-        <td @click="blockoptionsbtn">{{$t("message.blockoptions")}}</td>
-        <td @click="shengcaiyoudaobtn">{{$t("message.shengcaiyoudao")}}</td>
-        <td @click="Boxesbtn">{{$t("message.Boxes")}}</td>
-        <!-- <td @click="phoenixbtn">{{$t("message.phoenix")}}</td> -->
-        <td></td>
-        
+        <td @click="alertbtn(1)">{{$t("message.shuzitanxian")}}</td> 
+        <td @click="alertbtn(1)">{{$t("message.huanleshaizi")}}</td> 
+        <td @click="alertbtn(1)">{{$t("message.qukuainongchang")}}</td> 
+        <td @click="alertbtn(1)">{{$t("message.kuanggongdaheng")}}</td> 
       </tr>
     </table>
     </div>
@@ -52,16 +32,10 @@ export default {
   },
   data () {
     return {
-      zerotrap:'static/images/zerotrap.png',
-      eash:'static/images/eash.png',
-      blockoptions:'static/images/blockoptions.png',
-      phoenix:'static/images/phoenix.png',
-      zerodicelogo:'static/images/zerodicelogox.png',
-      gowinlogo :'static/images/gowin.png',
-      gowinpluslogo:'static/images/gowin_plus.png',
-      Boxes :'static/images/Boxes.png',
-      phoenix_sec:'static/images/phoenix_sec.png',
-      shengcaiyoudao:'static/images/shengcaiyoudao.png',
+      shuzitanxian:'static/img/1.png',
+      huanlesaizi:'static/img/2.png',
+      qukuainongchang:'static/img/3.png',
+      kuanggongdaheng:'static/img/4.png',
       isshowtoast:false
     }
   },
@@ -69,87 +43,27 @@ export default {
 
   },
   methods: {
-    eashbtn:function (event) {      
-      let dname = window.localStorage.getItem("Eash");
-      if(dname){
-        window.open(Links.url.eash,'_self')
+    alertbtn:function(index){
+      let data = {};
+      if(index==1){
+        data = {"name":"数字探险","link":Links.url.shuzitanxian,"state":1}
+      }else if(index==2){
+        data = {"name":"欢乐骰子","link":Links.url.shuzitanxian,"state":1}
+      }else if(index==3){
+        data = {"name":"区块农场","link":Links.url.shuzitanxian,"state":1}
       }else{
-        trans.$emit("tipsemit",{"name":"Eash","link":Links.url.eash,"state":0});
+        data = {"name":"矿工大亨","link":Links.url.shuzitanxian,"state":1}
       }
+      trans.$emit("tipsemit",data);
+
+      // let dname = window.localStorage.getItem("Phoenix2.0");
+      // if(dname){
+      //   window.open(Links.url.phoenix_sec,'_self')
+      // }else{
+      //   trans.$emit("tipsemit",{"name":"Phoenix2.0","link":Links.url.phoenix_sec,"state":0});
+      // }
     },
-    zerotrapbtn:function(event){
-      let dname = window.localStorage.getItem("ZeroTrap");
-      if(dname){
-        window.open(Links.url.zerotrap,'_self')
-      }else{
-        trans.$emit("tipsemit",{"name":"ZeroTrap","link":Links.url.zerotrap,"state":0});
-      }
-    },
-    blockoptionsbtn:function(){
-      
-      let dname = window.localStorage.getItem("Blockoptions");
-      if(dname){
-        window.open(Links.url.blockoptions,'_self')
-      }else{
-        trans.$emit("tipsemit",{"name":"Blockoptions","link":Links.url.blockoptions,"state":0});
-      }
-    },
-    Boxesbtn:function(){
-      let dname = window.localStorage.getItem("Boxes");
-      if(dname){
-        window.open(Links.url.Boxes,'_self')
-      }else{
-        trans.$emit("tipsemit",{"name":"Boxes","link":Links.url.Boxes,"state":0});
-      }
-    },
-    zerodicelogobtn:function(){
-      let dname = window.localStorage.getItem("Zerodicelogo");
-      if(dname){
-        window.open(Links.url.zerodicelogo,'_self')
-      }else{
-        trans.$emit("tipsemit",{"name":"ZeroDice","link":Links.url.zerodicelogo,"state":0});
-      }
-    },
-    phoenixbtn:function(){
-      let dname = window.localStorage.getItem("Phoenix");
-      if(dname){
-        window.open(Links.url.phoenix,'_self')
-      }else{
-        trans.$emit("tipsemit",{"name":"Phoenix","link":Links.url.phoenix,"state":0});
-      }
-    },
-    phoenix_secbtn:function(){
-      let dname = window.localStorage.getItem("Phoenix2.0");
-      if(dname){
-        window.open(Links.url.phoenix_sec,'_self')
-      }else{
-        trans.$emit("tipsemit",{"name":"Phoenix2.0","link":Links.url.phoenix_sec,"state":0});
-      }
-    },
-    gowinlogobtn:function(){
-      let dname = window.localStorage.getItem("gowin");
-      if(dname){
-        window.open(Links.url.gowin,'_self')
-      }else{
-        trans.$emit("tipsemit",{"name":"gowin","link":Links.url.gowin,"state":0});
-      }
-    },
-    gowinplusbtn:function(){
-      let dname = window.localStorage.getItem("TreasureBasin");
-      if(dname){
-        window.open(Links.url.gowin_plus,'_self')
-      }else{
-        trans.$emit("tipsemit",{"name":"TreasureBasin","link":Links.url.gowin_plus,"state":0});
-      }
-    },
-    shengcaiyoudaobtn:function(){
-      let dname = window.localStorage.getItem("升财有道");
-      if(dname){
-        window.open(Links.url.shengcaiyoudao,'_self')
-      }else{
-        trans.$emit("tipsemit",{"name":"升财有道","link":Links.url.shengcaiyoudao,"state":0});
-      }
-    },
+    
     closedivbtn:function(){
       this.isshowtoast=false
     }

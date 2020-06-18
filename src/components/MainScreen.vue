@@ -9,9 +9,9 @@
     <Head></Head>
     <Reffer></Reffer>
     <Popular></Popular>
-    <Biduoduo></Biduoduo>
-    <Tools></Tools>
-    <p>Copyright 2019 © Dapp-Browser E-mail:support@etherzero.org</p>
+    <!-- <Biduoduo></Biduoduo>
+    <Tools></Tools> -->
+    <!-- <p>Copyright 2019 © Dapp-Browser E-mail:support@etherzero.org</p> -->
     <div class="tipsclass" v-show="isshowtipx">
       <div  v-show="state_open">
         <p>
