@@ -37,7 +37,7 @@
 	  	},
 	  	autoPlay() {
 		      this.mark++
-		        if(this.mark === 2){
+		        if(this.mark > 2){
 		          this.mark = 0 
 		          return;
 		        }
